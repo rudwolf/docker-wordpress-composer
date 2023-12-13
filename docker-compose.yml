@@ -18,10 +18,12 @@ services:
     image: mariadb
     container_name: myapp-mysql
     volumes:
-       - './data/db:/var/lib/mysql:delegated'
+      - 'db:/var/lib/mysql:delegated'
     environment:
-      - MYSQL_ROOT_PASSWORD=password
-      - MYSQL_DATABASE=myapp
+      - MYSQL_USER=${WORDPRESS_DB_USER}
+      - MYSQL_PASSWORD=${WORDPRESS_DB_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${WORDPRESS_DB_NAME}
     restart: always
     ports:
       - '3306:3306'
@@ -35,10 +37,10 @@ services:
       - ./src:/var/www/html:rw,cached
       - ./config/php.ini:/usr/local/etc/php/conf.d/php.ini
     environment:
-      - WORDPRESS_DB_NAME=myapp
-      - WORDPRESS_TABLE_PREFIX=wp_
-      - WORDPRESS_DB_HOST=mysql
-      - WORDPRESS_DB_PASSWORD=password
+      - WORDPRESS_DB_NAME=${WORDPRESS_DB_NAME}
+      - WORDPRESS_TABLE_PREFIX=${WORDPRESS_TABLE_PREFIX}
+      - WORDPRESS_DB_HOST=${WORDPRESS_DB_HOST}
+      - WORDPRESS_DB_PASSWORD=${WORDPRESS_DB_PASSWORD}
     depends_on:
       - mysql
     restart: always
@@ -53,9 +55,9 @@ services:
     ports:
       - '9001:80'
     environment:
-      PMA_HOST: mysql
-      MYSQL_USER: root 
-      MYSQL_ROOT_PASSWORD: password 
+      PMA_HOST: ${WORDPRESS_DB_HOST}
+      MYSQL_USER: ${WORDPRESS_DB_USER}
+      MYSQL_ROOT_PASSWORD: ${WORDPRESS_DB_PASSWORD}
 
   composer:
     image: composer/composer
@@ -64,3 +66,6 @@ services:
     restart: 'no'
     volumes:
       - ./src:/var/www/html:rw,cached
+
+volumes:
+  db:

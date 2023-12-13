@@ -25,7 +25,11 @@
   },
 	"config": {
 		"preferred-install": "dist",
-		"secure-http": false
+		"secure-http": false,
+    "allow-plugins": {
+      "roots/wordpress-core-installer": true,
+      "composer/installers": true
+    }
 	},
   "repositories": [
     {
@@ -38,7 +42,7 @@
     "composer/installers": "^1.4",
     "vlucas/phpdotenv": "^3.0.0",
     "oscarotero/env": "^1.1.0",
-    "roots/wordpress": "^5.2.1",
+    "roots/wordpress": "^6.4",
     "roots/wp-config": "1.0.0",
     "roots/wp-password-bcrypt": "1.0.0"
   },

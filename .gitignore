@@ -6,9 +6,19 @@ src/web/app/upgrade
 src/web/app/uploads/*
 !src/web/app/uploads/.gitkeep
 
+# Logs
+debug.log
+supervisord.log
+supervisord.pid
+
 # WordPress
 src/web/wp
 src/web/.htaccess
+
+# Default Themes
+src/web/app/themes/twentytwentyfour
+src/web/app/themes/twentytwentythree
+src/web/app/themes/twentytwentytwo
 
 # WP-CLI
 db-sync
