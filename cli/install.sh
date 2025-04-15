@@ -1,1 +1,1 @@
-docker-compose run composer update
+docker compose run composer update

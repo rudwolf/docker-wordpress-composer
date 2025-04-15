@@ -91,7 +91,7 @@ composer install
 ## Run
 
 ```shell
-docker-compose up -d
+docker compose up -d
 ```
 
 > Or, you can run `./cli/up.sh` to run this automatically
@@ -103,7 +103,7 @@ docker-compose up -d
 When making changes to the Dockerfile, use:
 
 ```bash
-docker-compose up -d --force-recreate --build
+docker compose up -d --force-recreate --build
 ```
 
 > Or, even better, to force the recreation, run, in the following order:
@@ -125,6 +125,10 @@ wp search-replace https://olddomain.com https://myapp.local --allow-root
 ```
 
 ### Changelog
+
+#### 2025-04-15
+- Updated PHP to 8.2
+- Docker commands updated to last version
 
 #### 2020-12-13
 - Added cronjob so now the container doesn't depends on WP_Cron to run, the cron jobs are running trough wp-cli
@@ -153,29 +157,31 @@ docker exec -it myapp-wordpress bash
 Stop
 
 ```shell
-docker-compose stop
+docker compose stop
 ```
 
 Down (stop and remove)
 
 ```shell
-docker-compose down
+docker compose down
 ```
 
 Cleanup
 
 ```shell
-docker-compose rm -v
+docker compose rm -v
 ```
 
 Recreate
 
 ```shell
-docker-compose up -d --force-recreate
+docker compose up -d --force-recreate
 ```
 
 Rebuild docker container when Dockerfile has changed
 
 ```shell
-docker-compose up -d --force-recreate --build
+docker compose up -d --force-recreate --build
 ```
+
+Also, the .cli folder contains some scripts to help you with the commands above.

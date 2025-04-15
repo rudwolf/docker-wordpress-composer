@@ -1,3 +1,7 @@
+### 1.12.2: 2025-04-15
+* PHP 8.2
+* Docker commands updated to last version
+
 ### 1.12.1: 2019-02-14
 
 * Update `vlucas/phpdotenv` ([#417](https://github.com/roots/bedrock/pull/417))
